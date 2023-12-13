@@ -8,7 +8,7 @@
 
   - FastAPI
 
-  - All of the above
+  - [X] All of the above (extension of Django and flask : DjangoRest and Flask Restful)
 
 - **Question 2:** _What's the main difference between Django, Flask and FastAPI in terms of performance and speed?_
 
@@ -16,7 +16,7 @@
 
   - Flask outperforms Django and FastAPI.
 
-  - FastAPI is renowned for its increased speed and performance compared with Django and Flask.
+  - [X] FastAPI is renowned for its increased speed and performance compared with Django and Flask.
 
   - Django, Flask and FastAPI have equivalent performance.
 
@@ -26,13 +26,13 @@
 
   - A breakpoint in the code where the API can be interrupted.
 
-  - A specific URL to which a request can be sent to interact with the API.
+  - [X] A specific URL to which a request can be sent to interact with the API. (The API has a 'root' url, then each request reach a specific endpoint)
 
   - A unique identifier assigned to each incoming request.
 
 - **Question 4:** _What are the main HTTP verbs used to define REST API methods?_
 
-  - GET, POST, PUT, PATCH, DELETE
+  - [X] GET, POST, PUT, PATCH, DELETE
 
   - SEND, RECEIVE, UPDATE, REMOVE
 
@@ -44,15 +44,15 @@
 
   - A component that processes data sent by the user.
 
-  - An external library used to speed up API development.
+  - [X] An external library used to speed up API development.
 
-  - Intermediate software that processes the request before it reaches the main application.
+  - [X] Intermediate software that processes the request before it reaches the main application.
 
   - A method for securing data stored in the database.
 
 - **Question 6:** _Which Python library is often used to serialize and deserialize JSON data in the context of REST APIs?_
 
-  - JSONify
+  - [X] JSONify
 
   - PyJSON
 
@@ -64,7 +64,7 @@
 
   - Create a new resource.
 
-  - Update an existing resource, or create one if it doesn't exist.
+  - [X] Update an existing resource, or create one if it doesn't exist.
 
   - Delete a resource.
 
@@ -72,7 +72,7 @@
 
 - **Question 8:** In FastAPI, how do you define an endpoint to handle a POST request with JSON data?\*
 
-  - @app.post("/endpoint")
+  - [X] @app.post("/endpoint")
 
   - @app.get("/endpoint")
 
@@ -98,11 +98,11 @@ REST (Representational State Transfer) is an architectural style for designing n
 
 ### Key Concepts in FastAPI:
 
-- **Endpoint:**
+- **Endpoint:** url for specific requests sent to the API.
 
-- **Basic HTTP Methods:**
+- **Basic HTTP Methods:** CREATE ; PUT ; PATCH ; POST ; DELETE
 
-- **Request and Response:**
+- **Request and Response:** Request is what the user send to the server ; response is the answer from the server.
 
 ### Evaluation requirements
 
