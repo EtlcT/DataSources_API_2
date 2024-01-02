@@ -2,7 +2,8 @@ from fastapi import APIRouter
 from src.schemas.message import MessageResponse
 import kaggle
 import pandas as pd
-import scikit-learn as 
+from sklearn.model_selection import train_test_split
+import json
 
 router = APIRouter()
 
@@ -31,3 +32,16 @@ def process_data():
 
 @router.get('/split_dataset')
 def train_test_split_iris():
+    dataframe_iris = pd.read_csv('services/epf-flower-data-science/src/api/data/irisProcessed.csv')
+    x_train, x_test, y_train, y_test = train_test_split(dataframe_iris.drop('Species', axis=1), dataframe_iris['Species'])
+    data_json = {
+        'train': {
+            'features': x_train.to_dict(orient='records'),
+            'labels': y_train.to_list()
+        },
+        'test': {
+            'features': x_test.to_dict(orient='records'),
+            'labels': y_test.to_list()
+        }
+    }
+    return data_json
