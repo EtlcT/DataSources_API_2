@@ -7,11 +7,7 @@ from sklearn.tree import DecisionTreeClassifier
 import json
 from joblib import dump, load
 import os
-import sys
-root_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../../../"))
-sys.path.append(root_path)
-from firestore import FirestoreClient
-
+from src.services.firestore import FirestoreClient
 
 router = APIRouter()
 
@@ -62,6 +58,7 @@ def train_decisionTree_on_iris():
     dirname = os.path.dirname(__file__)
     params_url = os.path.join(dirname, '../../config/model_parameters.json')
     with open(params_url) as f:
+
         params = json.load(f)
     model = DecisionTreeClassifier(random_state=42, max_depth=params['max_depth'], min_samples_leaf=params['min_samples_leaf'], min_samples_split=params['min_samples_split'])
     model.fit(x_train,y_train)
@@ -89,3 +86,5 @@ def get_param_Firestone():
     client.exist_or_create_parameters_document()
     parameters = client.get(collection_name='parameters', document_id='Firestore_param')
     return parameters
+
+# @router.get('/add_or_update_parameters')
