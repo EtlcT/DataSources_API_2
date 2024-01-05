@@ -81,10 +81,27 @@ def get_predict_iris_DecisionTree():
     return predictions_json
 
 @router.get('/get_Firestore_parameters')
-def get_param_Firestone():
+def get_param_Firestone(document: str):
     client = FirestoreClient()
-    client.exist_or_create_parameters_document()
-    parameters = client.get(collection_name='parameters', document_id='Firestore_param')
+    if document == "default":
+        try:
+            client.get(collection_name='parameters', document_id=document)
+            if client.get(collection_name='parameters', document_id=document) == dict():
+                client.initialize_default_parameters_document()
+                return f"Re initialize default document : {client.get(collection_name='parameters', document_id=document)}"
+            return client.get(collection_name='parameters', document_id=document)
+        except:
+            client.initialize_default_parameters_document()
+            return f"Re initialize default document : {client.get(collection_name='parameters', document_id=document)}"
+    parameters = client.get(collection_name='parameters', document_id=document)
     return parameters
 
-# @router.get('/add_or_update_parameters')
+@router.put('/update_parameters')
+def update_parameters_Firestone(document: str, **params : dict):
+    client = FirestoreClient()
+    return client.update_parameters(collection_name='parameters', document_id=document, params=params['params'])
+
+@router.delete('/delete_parameters')
+def delete_parameters_Firestone(document: str, **params: list):
+    client = FirestoreClient()
+    return client.delete_parameters(collection_name='parameters', document_id=document, params=params['params'])
